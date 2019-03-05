@@ -272,8 +272,7 @@ class NetworkRoutingSolver:
         return {'cost': total_length, 'path': path_edges}
 
     # Time complexity is O(|V^2|) for an unsorted array
-    # Time complexity is O(|V|log|V|) for a heap with a small graph
-    # Time complexity is O(|V^2|log|V|) for a heap with a large graph
+    # Time complexity is O(|V|log|V|) for a minimum heap
     # Space complexity is O(|V|)
     def computeShortestPaths(self, srcIndex, use_heap=False):
         self.source = srcIndex
