@@ -134,7 +134,7 @@ class PriorityHeap:
 
         # Check to see if we need to swap the parent and child nodes based on their distances
         if parent_distance > child_distance:
-            # Swap the parent and child nodes in the dictionary
+            # Swap the parent and child nodes in the heap
             self.queue[parent_index], self.queue[child_index] = self.queue[child_index], self.queue[parent_index]
             # Grab the new swapped nodes from the heap
             parent_node, child_node = self.queue[parent_index], self.queue[child_index]
@@ -175,7 +175,7 @@ class PriorityHeap:
                 if right_index < length:
                     # If the right child node's distance is greater than or equal to the left child node's distance
                     if self.node_dict[self.queue[right_index]][1] >= self.node_dict[self.queue[left_index]][1]:
-                        # Swap the parent and left child nodes in the dictionary
+                        # Swap the parent and left child nodes in the heap
                         self.queue[parent_index], self.queue[left_index] = self.queue[left_index], self.queue[parent_index]
                         # Grab the new swapped nodes from the heap
                         parent_node, left_node = self.queue[parent_index], self.queue[left_index]
@@ -193,7 +193,7 @@ class PriorityHeap:
                         return self.percolate_down(left_index)
                     # Otherwise, the right child node is smaller
                     else:
-                        # Swap the parent and right child nodes in the dictionary
+                        # Swap the parent and right child nodes in the heap
                         self.queue[parent_index], self.queue[right_index] = self.queue[right_index], self.queue[parent_index]
                         # Grab the new swapped nodes from the heap
                         parent_node, right_node = self.queue[parent_index], self.queue[right_index]
@@ -215,7 +215,7 @@ class PriorityHeap:
         if right_index < length:
             # If the parent node's distance is greater than the right child node's distance
             if self.node_dict[self.queue[parent_index]][1] > self.node_dict[self.queue[right_index]][1]:
-                # Swap the parent and right child nodes in the dictionary
+                # Swap the parent and right child nodes in the heap
                 self.queue[parent_index], self.queue[right_index] = self.queue[right_index], self.queue[parent_index]
                 # Grab the new swapped nodes from the heap
                 parent_node, right_node = self.queue[parent_index], self.queue[right_index]
