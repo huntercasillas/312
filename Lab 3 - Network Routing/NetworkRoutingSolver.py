@@ -42,7 +42,7 @@ class PriorityArray:
 
     # Time complexity is O(|V|) and space complexity is O(1)
     def delete_min(self):
-        # Initially set the current min to 0
+        # Initially set the current min index to 0
         minimum = 0
         # Grab the distance of the first node in the array
         min_distance = self.node_dict[self.queue[0]][1]
@@ -65,7 +65,7 @@ class PriorityArray:
 
 
 # Class implementation of priority queue minimum heap
-# Time complexity is O(|V|log|V|) and space complexity is O(|V|)
+# Time complexity is O(log|V|) and space complexity is O(|V|)
 class PriorityHeap:
     def __init__(self, network, nodes):
         self.network = network
@@ -261,6 +261,8 @@ class NetworkRoutingSolver:
             # Grab the previous node from the current node
             previous_node = self.node_dict[current_node][2]
             # Loop through each edge in the previous node's neighbors O(|E|)
+            # Since we have a maximum of 3 edges per node,
+            # this loop is insignificant and can be ignored in the overall complexity
             for edge in previous_node.neighbors:
                 # Check to see if the edge's destination is our current node
                 if edge.dest == current_node:
@@ -296,7 +298,7 @@ class NetworkRoutingSolver:
 
         # Check to see if we should use the heap or array implementation
         if use_heap:
-            # Heap implementation has a time complexity of O(|V|log|V|)
+            # Heap implementation has a time complexity of O(log|V|)
             priority = PriorityHeap(self.network, self.node_dict)
         else:
             # Unsorted array implementation has a time complexity of O(|V|)
@@ -307,6 +309,8 @@ class NetworkRoutingSolver:
             # Grab the current minimum node from our priority queue
             current_node = priority.delete_min()
             # Loop through each edge in the current node's neighbors
+            # Since we have a maximum of 3 edges per node,
+            # this loop is insignificant and can be ignored in the overall complexity
             for edge in current_node.neighbors:
                 # Set our next node to the current edge's destination node
                 next_node = edge.dest
