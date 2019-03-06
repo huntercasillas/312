@@ -65,7 +65,7 @@ class PriorityArray:
 
 
 # Class implementation of priority queue minimum heap
-# Time complexity is O(log|V|) and space complexity is O(|V|)
+# Time complexity is O(|V|log|V|) and space complexity is O(|V|)
 class PriorityHeap:
     def __init__(self, network, nodes):
         self.network = network
@@ -73,7 +73,7 @@ class PriorityHeap:
         self.node_dict = nodes
         self.make_queue()
 
-    # Time and space complexity are both O(|V|)
+    # Time complexity is O(|V|log|V|) and space complexity is O(|V|)
     def make_queue(self):
         # Inserts each node into the minimum heap
         for node in self.network.nodes:
@@ -298,13 +298,13 @@ class NetworkRoutingSolver:
 
         # Check to see if we should use the heap or array implementation
         if use_heap:
-            # Heap implementation has a time complexity of O(log|V|)
+            # Heap implementation is O(log|V|)
             priority = PriorityHeap(self.network, self.node_dict)
         else:
-            # Unsorted array implementation has a time complexity of O(|V|)
+            # Unsorted array implementation is O(|V|)
             priority = PriorityArray(self.network, self.node_dict)
 
-        # While our priority queue is not empty O(|V|)
+        # While our priority queue is not empty
         while len(priority.queue) > 0:
             # Grab the current minimum node from our priority queue
             current_node = priority.delete_min()
