@@ -195,10 +195,10 @@ def calc_banded(top_sequence, side_sequence, maximum):
     # Where k is the bandwidth constant of 7
     matrix = [[(initial, "-") for _ in range(columns)] for _ in range(rows)]
 
-    # Set the top left corner of the matrix with the corresponding values O(1)
+    # Set the corner of the matrix with the corresponding values O(1)
     matrix[0][3] = (0, "empty")
 
-    # Sets the first row and column with increasing multiples of the INDEL value O(1)
+    # Set the first row and column with increasing multiples of the INDEL value O(1)
     matrix[0][4] = (5, "side")
     matrix[0][5] = (10, "side")
     matrix[0][6] = (15, "side")
@@ -206,7 +206,7 @@ def calc_banded(top_sequence, side_sequence, maximum):
     matrix[2][1] = (10, "top")
     matrix[3][0] = (15, "top")
 
-    # Sets up upper and lower sections to infinity for the score O(1)
+    # Set the upper and lower sections to infinity for the score O(1)
     # The second value (origin) is just set to whatever it already is
     matrix[0][0] = (infinity, matrix[0][0][1])
     matrix[0][1] = (infinity, matrix[0][1][1])
