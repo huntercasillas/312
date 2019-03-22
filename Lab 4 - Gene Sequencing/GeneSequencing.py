@@ -87,7 +87,8 @@ def calc_unrestricted(top_sequence, side_sequence, maximum):
 
 
 # Finds the character-by-character alignment of the two sequences
-# Time complexity is O(nm) and space complexity is O(s) where s is the length of whichever alignment is longer
+# Time complexity is O(n + m) and space complexity is O(s)
+# Where n and m are the lengths of the top and side sequences and s is the length of whichever alignment is longer
 def alignment_unrestricted(top_sequence, side_sequence, matrix):
 
     # Get the current side and top positions in the matrix O(1)
@@ -99,7 +100,7 @@ def alignment_unrestricted(top_sequence, side_sequence, matrix):
     # The end value is 100 because we only show the first 100 characters O(1)
     end = 100
 
-    # This while loop iterates through the entire matrix O(nm)
+    # This while loop iterates through the entire lengths of both sequences at worst O(n + m)
     while matrix[side][top][1] != "empty":
         # Set the source/origin to the second value in the tuple for the current matrix position O(1)
         origin = matrix[side][top][1]
@@ -302,7 +303,8 @@ def calc_banded(top_sequence, side_sequence, maximum):
 
 
 # Finds the character-by-character alignment of the two sequences
-# Time complexity is O(kn) and space complexity is O(s) where s is the length of whichever alignment is longer
+# Time complexity is O(n + m) and space complexity is O(s)
+# Where n and m are the lengths of the top and side sequences and s is the length of whichever alignment is longer
 def alignment_banded(top_sequence, side_sequence, matrix, side, top):
 
     # Initial alignments are empty O(1)
@@ -311,7 +313,7 @@ def alignment_banded(top_sequence, side_sequence, matrix, side, top):
     # The end value is 100 because we only show the first 100 characters O(1)
     end = 100
 
-    # This while loop iterates to (O,3) in the matrix O(kn)
+    # This while loop iterates to (O,3) in the matrix O(n + m) at worst case
     while matrix[side - 1][top][1] != "empty":
         # Set the source/origin to the second value in the tuple for the current matrix position O(1)
         origin = matrix[side - 1][top][1]
